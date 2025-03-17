@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  tools {
-    maven "3.9.9"
-    jdk "openjdk"
-  }
   parameters {
     string(name: 'build_version', defaultValue: 'V1.0', description: 'Build version to use for Docker image')
   }
@@ -14,18 +10,10 @@ pipeline {
       }
     }
     stage('Build and Test') {
-      environment {
-        JAVA_HOME = "${tool 'openjdk'}"
-        MAVEN_HOME= "${tool '3.9.9'}"
-        PATH = "${env.JAVA_HOME}/bin:${env.MAVEN_HOME}/bin:${env.PATH}"
-      }
       steps {
         sh 'java --version'
-        sh 'echo $PATH'
-        sh 'sleep 1000'
         sh 'mvn --version'
         sh 'ls -ltr'
-        
         // build the project and create a JAR file
         sh 'cd demo-java-app && mvn clean package'
       }
