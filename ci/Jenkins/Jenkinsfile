@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
     maven "3.9.9"
-    jdk "jdk"
+    jdk "openjdk"
   }
   parameters {
     string(name: 'build_version', defaultValue: 'V1.0', description: 'Build version to use for Docker image')
