@@ -15,8 +15,8 @@ pipeline {
     }
     stage('Build and Test') {
       environment {
-        JAVA_HOME="${tool 'openjdk'}"
-        PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+        JAVA_HOME = "${tool 'openjdk'}"
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
       }
       steps {
         sh 'java --version'
