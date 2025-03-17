@@ -4,6 +4,10 @@ pipeline {
     maven "3.9.9"
     jdk "openjdk"
   }
+  environment {
+    JAVA_HOME="${tool 'openjdk'}"
+    PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+  }
   parameters {
     string(name: 'build_version', defaultValue: 'V1.0', description: 'Build version to use for Docker image')
   }
