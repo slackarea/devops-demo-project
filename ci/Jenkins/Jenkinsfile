@@ -22,6 +22,7 @@ pipeline {
         sh 'java --version'
         sh 'mvn --version'
         sh 'ls -ltr'
+        sh 'sleep 100'
         // build the project and create a JAR file
         sh 'cd demo-java-app && mvn clean package'
       }
